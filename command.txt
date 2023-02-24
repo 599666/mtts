@@ -1,0 +1,26 @@
+cd examples
+python wav2mel.py -c ./aishell3/config.yaml -w /root/mandarin-tts/examples/aishell3/outputs -m /root/mandarin-tts/examples/mel-aishell3 -d cpu
+
+# train
+# 需要下载aishell3数据集： https://opendatalab.com/AISHELL-3
+cd aishell3
+python prepare.py --wav_folder /root/mandarin-tts/examples/aishell3/xx  --mel_folder /root/mandarin-tts/examples/mel-aishell3 --dst_folder ./train/
+
+
+# synthesize
+python ../../mtts/synthesize.py  -d cuda -c config.yaml --checkpoint ./checkpoints/checkpoint_1350000.pth.tar -i input.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------
